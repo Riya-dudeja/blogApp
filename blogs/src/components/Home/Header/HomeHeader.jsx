@@ -15,7 +15,7 @@ import { db } from "../../../firebase/firebase";
 import { toast } from "react-toastify";
 
 const HomeHeader = () => {
-  const { allUsers, userLoading, currentUser, setPublish, title, description } = Blog();
+  const { allUsers, userLoading, currentUser, setPublish } = Blog();
   const [modal, setModal] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
   const [loading, setLoading] = useState(false);
