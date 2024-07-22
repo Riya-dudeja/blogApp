@@ -1,10 +1,11 @@
 import { deleteDoc, setDoc, doc } from 'firebase/firestore';
-import React from 'react';
 import { PiHandsClappingDuotone } from 'react-icons/pi';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import useSingleFetch from '../../../hooks/useSingleFetch';
 import { formatNum } from '../../../../utils/helper';
+import { Blog } from '../../../../Context/Context';
+import { db } from '../../../../firebase/firebase';
 
 const Like = ({post, postId}) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -12,8 +13,9 @@ const Like = ({post, postId}) => {
   const {data} = useSingleFetch("posts", postId, "likes");
 
   useEffect(() => {
-    setIsLiked(data && data.findIndex(
-        (item) => item.id === currentUser?.uid) !== -1
+    setIsLiked(
+      data && data.findIndex(
+        (item) => item.id === currentUser?.uid ) !== -1
     );
   }, [data])
 
@@ -29,11 +31,13 @@ const Like = ({post, postId}) => {
         );
         if(isLiked){
           await deleteDoc(likeRef);
-        } else{
+        } else {
           await setDoc(likeRef, {
             userId: currentUser?.uid,
           });
         }
+      } else {
+        setAuthModel(true);
       }
     } catch(error){
       toast.error(error.message);
@@ -48,7 +52,7 @@ const Like = ({post, postId}) => {
       <PiHandsClappingDuotone
         className={`text-xl ${isLiked ? "text-black" : "text-gray-500"}`} />
       <span>
-        { formatNum(data?.length) }
+        {formatNum(data?.length)}
       </span>
     </button>
   )

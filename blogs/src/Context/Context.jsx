@@ -12,6 +12,8 @@ const Context = ({children}) => {
   const [userLoading, setUserLoading] = useState(true);
   const [allUsers, setAllUsers] = useState([]);
   const [publish, setPublish] = useState(false);
+  const [showComment, setShowComment] = useState(false);
+  const [commentLength, setCommentLength] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -53,6 +55,10 @@ const Context = ({children}) => {
          userLoading,
          publish,
          setPublish,
+         showComment,
+         setShowComment,
+         commentLength,
+         setCommentLength
         }
       }>
         {loading? <Loading /> : children}

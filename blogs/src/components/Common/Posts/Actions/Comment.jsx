@@ -2,10 +2,14 @@ import React from 'react';
 import { FaRegComment } from 'react-icons/fa';
 
 const Comment = ({post}) => {
+  const {setShowComment, commentLength} = Blog();
   return (
-    <button className='flex items-center gap-1 text-sm'>
+    <button
+      onClick={() => setShowComment(true)}
+      className='flex items-center gap-1 text-sm'
+    >
       <FaRegComment className='text-xl' />
-      <span>1</span>
+      <span>{formatNum(commentLength)}</span>
     </button>
   )
 }
