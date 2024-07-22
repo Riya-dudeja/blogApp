@@ -14,7 +14,7 @@ const useFetch = (collectionName) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const getDatas = async () => {
+    const getData = async () => {
       const postRef = query(
         collection(db, collectionName),
         orderBy("created", "desc")
@@ -40,7 +40,7 @@ const useFetch = (collectionName) => {
       return () => unsubscribe();
     };
 
-    getDatas();
+    getData();
   }, [collectionName]);
   return {
     data,

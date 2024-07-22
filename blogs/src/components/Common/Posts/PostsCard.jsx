@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const PostsCard = ({ post }) => {
   const { title, desc, created, postImg, id: postId, userId, username } = post;
   const { currentUser } = Blog();
-
   const navigate = useNavigate();
 
   return (

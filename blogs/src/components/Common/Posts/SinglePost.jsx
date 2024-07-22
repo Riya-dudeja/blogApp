@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { db } from '../../../firebase/firebase';
@@ -6,8 +6,8 @@ import Loading from '../../Loading/Loading';
 import FollowBtn from '../../Home/UserToFollow/FollowBtn';
 import {Blog} from '../../../Context/Context';
 import moment from 'moment/moment';
-import readTime from '../../../utils/helper';
-import {doc, getDoc} from 'firebase/firestore';
+import {readTime} from '../../../utils/helper';
+import {doc, getDoc, updateDoc, increment} from 'firebase/firestore';
 import Actions from './Actions/Actions';
 import SavedPost from './Actions/SavedPost';
 import SharePost from './Actions/SharePost';
@@ -17,6 +17,28 @@ const SinglePost = () => {
   const [post, setPost] = useState({});
   const [loading, setLoading] = useState(false);
   const {currentUser} = Blog();
+
+  const isInitialRender = useRef(true);
+  useEffect(() => {
+    if(isInitialRender?.current){
+      const incrementPageView = async () => {
+        try {
+          const ref = doc(db, "posts", postId);
+            await updateDoc(
+              ref,
+              {
+                pageViews: increment(1)
+              },
+              { merge: true }
+            )
+        } catch (error) {
+          toast.error(error.message);
+        }
+      };
+      incrementPageView();
+    }
+    isInitialRender.current = false;
+  }, [])
 
   useEffect(() => {
     const fetchPost = async () => {

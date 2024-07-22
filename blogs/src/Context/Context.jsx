@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import Loading from "../components/Loading/Loading";
 import { auth, db } from "../firebase/firebase";
 import { collection, onSnapshot, query } from "firebase/firestore";
+import useFetch from "../components/hooks/useFetch";
 
 const BlogContext = createContext();
 
@@ -14,14 +15,13 @@ const Context = ({children}) => {
   const [publish, setPublish] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [commentLength, setCommentLength] = useState(0);
+  const { authModel, setAuthModel } = useState(false);
 
   const [updateData, setUpdateData] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-
   useEffect(() => {
-    setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if(user){
         setCurrentUser(user);
@@ -50,10 +50,11 @@ const Context = ({children}) => {
     getUsers();
   }, []);
 
+  const {data: postData, loading: postLoading} = useFetch("posts");
 
   return (
-    <div>
-      <BlogContext.Provider value={
+      <BlogContext.Provider
+      value={
         {currentUser,
          setCurrentUser,
          allUsers,
@@ -69,16 +70,17 @@ const Context = ({children}) => {
          title,
          setTitle,
          description,
-         setDescription
+         setDescription,
+         postData,
+         postLoading,
+         authModel,
+         setAuthModel
         }
       }>
         {loading? <Loading /> : children}
       </BlogContext.Provider>
-    </div>
-  )
-}
+  );
+};
 export default Context;
 
-export const Blog = () => {
-  useContext(BlogContext);
-}
+export const Blog = () => useContext(BlogContext);

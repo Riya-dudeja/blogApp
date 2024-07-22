@@ -9,7 +9,7 @@ import { db } from '../../../../firebase/firebase';
 
 const Like = ({post, postId}) => {
   const [isLiked, setIsLiked] = useState(false);
-  const {currentUser} = Blog();
+  const {currentUser, setAuthModel} = Blog();
   const {data} = useSingleFetch("posts", postId, "likes");
 
   useEffect(() => {

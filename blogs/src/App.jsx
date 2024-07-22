@@ -11,7 +11,7 @@ import EditPost from './components/Common/Posts/EditPost';
 import { ToastContainer } from "react-toastify";
 
 export default function App() {
-  const currentUser = Blog();
+  const {currentUser} = Blog();
   return (
     <>
     {currentUser ? <HomeHeader /> : <DemoHeader />}

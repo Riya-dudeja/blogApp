@@ -41,7 +41,7 @@ const UserModal = ({ setModal }) => {
     try {
       await signOut(auth);
       navigate("/demo");
-      toast.success("User has be logged out");
+      toast.success("User has logged out");
     } catch (error) {
       toast.error(error.message);
     }
@@ -64,7 +64,6 @@ const UserModal = ({ setModal }) => {
             className="flex items-center gap-2 text-gray-500 hover:text-black/70"
             key={i}
             to={link.path}
-            path={link.path}
           >
             <span className="text-2xl">{link.icon}</span>
             <h2 className="text-md">{link.title}</h2>
