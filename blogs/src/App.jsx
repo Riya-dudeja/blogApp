@@ -16,6 +16,7 @@ export default function App() {
         {!currentUser && <Route path="/demo" element={<Demo />} />}
         <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/post/:postId" element={<SinglePost />} />
         <Route
           path="*"
           element={<Navigate to={!currentUser ? "/demo" : "/"} />}

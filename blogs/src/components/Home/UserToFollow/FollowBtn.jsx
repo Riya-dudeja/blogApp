@@ -57,6 +57,7 @@ const FollowBtn = ({userId}) => {
        toast.error(error.message);
     }
   }
+  const pathname = useLocation();
 
   return(
     <>
