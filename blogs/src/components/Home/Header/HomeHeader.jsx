@@ -15,7 +15,7 @@ import { db } from "../../../firebase/firebase";
 import { toast } from "react-toastify";
 
 const HomeHeader = () => {
-  const { allUsers, userLoading, currentUser, setPublish } = Blog();
+  const { allUsers, userLoading, currentUser, setPublish, title, description } = Blog();
   const [modal, setModal] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -39,8 +39,9 @@ const HomeHeader = () => {
       navigate(`/post/${postId}`);
       toast.success("Post has been updated");
     } catch (error) {
+        toast.error(error.message);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
@@ -73,9 +74,9 @@ const HomeHeader = () => {
           ) : editPath === "editPost" ? (
             <button
               onClick={handleEdit}
-              className={`btn !bg-green-700 !py-1 !text-white !rounded-full
-              ${loading ? "opacity-40" : ""}
-              `}>
+              className={`
+                btn !bg-green-700 !py-1 !text-white !rounded-full ${loading ? "opacity-40" : ""}
+            `}>
               {loading ? "Updating..." : "Save and Update"}
             </button>
           ) : (

@@ -15,6 +15,11 @@ const Context = ({children}) => {
   const [showComment, setShowComment] = useState(false);
   const [commentLength, setCommentLength] = useState(0);
 
+  const [updateData, setUpdateData] = useState({});
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -58,7 +63,13 @@ const Context = ({children}) => {
          showComment,
          setShowComment,
          commentLength,
-         setCommentLength
+         setCommentLength,
+         updateData,
+         setUpdateData,
+         title,
+         setTitle,
+         description,
+         setDescription
         }
       }>
         {loading? <Loading /> : children}
