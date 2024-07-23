@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { CiSaveDown2 } from "react-icons/ci";
 import useSingleFetch from "../../../hooks/useSingleFetch";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { db } from "../../../../firebase/firebase";
+import { toast } from "react-toastify";
+import { Blog } from "../../../../Context/Context";
 
 const SavedPost = ({post}) => {
   const [isSaved, setIsSaved] = useState(false);
-  const {currentUser} = Blog();
-  const {data, loading} = useSingleFetch(
+  const {currentUser, setAuthModel} = Blog();
+  const {data} = useSingleFetch(
     "users",
     post?.userId,
     "savePost",
@@ -13,7 +17,7 @@ const SavedPost = ({post}) => {
 
   useEffect(() => {
     setIsSaved(data && data.find(
-      (item) => item.id === post.id)
+      (item) => item.id === currentUser?.uid)
     );
   }, [data, post?.id]);
 
@@ -37,12 +41,13 @@ const SavedPost = ({post}) => {
           });
           toast.success("Post has been Saved");
         }
+      } else {
+        setAuthModel(true);
       }
-    }catch{
-
-    }
+    } catch(error){
+        toast.error(error.message);
+      }
   }
-
   return(
     <div>
       <button onClick={handleSave} className="hover:opacity-60">

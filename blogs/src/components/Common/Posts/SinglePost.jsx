@@ -11,6 +11,10 @@ import {doc, getDoc, updateDoc, increment} from 'firebase/firestore';
 import Actions from './Actions/Actions';
 import SavedPost from './Actions/SavedPost';
 import SharePost from './Actions/SharePost';
+import Like from "./Actions/Like";
+import Comment from "./Actions/Comment";
+import Recommended from "./Recommended";
+import Comments from "../Comments/Comments";
 
 const SinglePost = () => {
   const {postId} = useParams();
@@ -71,7 +75,7 @@ const SinglePost = () => {
     fetchPost();
   },[postId, post?.userId])
 
-  const {title, desc, postImg, username, created, userImg} = post;
+  const {title, desc, postImg, username, created, userImg, userId} = post;
   const navigate = useNavigate(null);
 
   return (

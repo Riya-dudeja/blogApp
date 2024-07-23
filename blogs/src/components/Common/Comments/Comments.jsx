@@ -57,7 +57,7 @@ const Comments = ({postId}) => {
         {/* header */}
         <div className='flex items-center justify-between'>
            <h3 className="text-xl font-bold">
-              Responses({data.length})
+              Comments({data.length})
            </h3>
            <button
               className="text-xl"
@@ -110,7 +110,11 @@ const Comments = ({postId}) => {
               <div className="border-t mt-8 py-4 flex flex-col gap-8">
                 {data &&
                   data.map((item, i) => (
-                    loading ? <Loading /> : <Comment item={item} key={i} postId={postId} />
+                    loading ? (
+                      <Loading />
+                    ) : (
+                      <Comment item={item} key={i} postId={postId} />
+                    )
                   )
                 )}
               </div>

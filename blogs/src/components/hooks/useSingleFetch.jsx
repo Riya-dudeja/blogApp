@@ -5,6 +5,7 @@ import { db } from "../../firebase/firebase";
 const useSingleFetch = (collectionName, id, subCol) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getSingleData = () => {
       if (id) {

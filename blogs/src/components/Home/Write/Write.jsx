@@ -24,9 +24,9 @@ const Write = () => {
         className="write my-5"
       />
       <div
-        className={`${
-          publish ? "visible opacity-100" : "invisible opacity-0"
-        } transition-all duration-200`}>
+        className={`
+          ${ publish ? "visible opacity-100" : "invisible opacity-0"} transition-all duration-200`
+        }>
         <Preview
           setPublish={setPublish}
           description={description}

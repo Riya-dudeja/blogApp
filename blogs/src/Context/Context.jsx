@@ -15,7 +15,7 @@ const Context = ({children}) => {
   const [publish, setPublish] = useState(false);
   const [showComment, setShowComment] = useState(false);
   const [commentLength, setCommentLength] = useState(0);
-  const { authModel, setAuthModel } = useState(false);
+  const [authModel, setAuthModel] = useState(false);
 
   const [updateData, setUpdateData] = useState({});
   const [title, setTitle] = useState("");

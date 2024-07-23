@@ -7,17 +7,17 @@ import {doc, deleteDoc, updateDoc} from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { db } from '../../../firebase/firebase';
 
-const Comment = ({ items: comment, postId }) => {
+const Comment = ({ item: comment, postId }) => {
   const {allUsers, currentUser} = Blog();
   const [drop, setDrop] = useState(false);
   const [more, setMore] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editComment, setEditComment] = useState(false);
-  const {userId, commentText, created} = comment;
   const [loading, setLoading] = useState(false);
   const getUserData = allUsers.find(
-    (user) => user.id === comment?.uid
+    (user) => user.id === comment?.userId
   );
+  const {userId, commentText, created} = comment;
   const removeComment = async() => {
     try {
       const ref = doc(db, "posts", postId, "comments", comment?.id);
@@ -55,7 +55,7 @@ const Comment = ({ items: comment, postId }) => {
 
   return (
     <section className='border-b'>
-      {isEdit ? (
+      {!isEdit ? (
         <>
           <div className="flex items-center gap-5 pt-[1rem]">
             <img
@@ -99,7 +99,7 @@ const Comment = ({ items: comment, postId }) => {
             </div>
           </div>
           <p className='py-4 text-sm'>
-            {more ? commentText : commentText.substring(0,100)}
+            {more ? commentText : commentText.substring(0,80)}
             {commentText.length > 100 && (
               <button onClick={() => setMore(!more)}>
                 {more ? '...less' : '...more'}

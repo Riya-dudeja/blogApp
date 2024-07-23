@@ -50,7 +50,7 @@ const SignIn = ({ setSignReq }) => {
       <button
         onClick={() => setSignReq("")}
         className="mt-5 text-sm text-green-600 hover:text-green-700
-      flex items-center mx-auto">
+        flex items-center mx-auto">
         <MdKeyboardArrowLeft />
         All sign In Options
       </button>

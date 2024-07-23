@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
+import { Blog } from '../../../Context/Context';
 
 const EditPost = () => {
   const {updateData, title, setTitle, description, setDescription} = Blog();
@@ -9,7 +10,7 @@ const EditPost = () => {
       setTitle(updateData.title);
       setDescription(updateData.description);
     }
-  })
+  }, [updateData]);
 
   return (
     <section className="write w-[90%] md:w-[80%] lg:w-[60%] mx-auto py-[3rem]">

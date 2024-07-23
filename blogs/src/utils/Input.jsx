@@ -16,7 +16,7 @@ const Input = ({type, title, form, setForm}) => {
         onChange={handleChange}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

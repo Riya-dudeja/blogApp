@@ -9,7 +9,7 @@ const ProfileAbout = ({ getUserData, setEditModal }) => {
         {getUserData?.bio || getUserData?.username + " Has no bio"}
       </p>
       <div className="text-right">
-        {currentUser?.uid === getUserData.userId && (
+        {currentUser?.uid === getUserData?.userId && (
           <button
             onClick={() => setEditModal(true)}
             className="border border-black py-2 px-5 rounded-full text-black mt-[3rem]"

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect} from "react";
+import React, { useState, useRef, useEffect} from "react";
 import { LiaTimesSolid } from "react-icons/lia";
 import ReactQuill from "react-quill";
 import TagsInput from "react-tagsinput";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-const Preview = ({setPublish}) => {
+const Preview = ({setPublish, description, title}) => {
   const imageRef = useRef(null);
   const [imageUrl, setImageUrl] = useState("");
   const [tags, setTags] = useState([]);
@@ -61,11 +61,11 @@ const Preview = ({setPublish}) => {
         title: preview.title,
         desc,
         tags,
-        postImg: imageUrl,
+        postImg: url || "",
         created: Date.now(),
         pageViews: 0,
       });
-      toast.success("Post has been added");
+      toast.success("Post Added");
       navigate("/");
       setPublish(false);
       setPreview({

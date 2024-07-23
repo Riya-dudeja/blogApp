@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Blog } from "../../../Context/Context";
 import { useParams } from 'react-router-dom';
 import Modal from "../../../utils/Modal";

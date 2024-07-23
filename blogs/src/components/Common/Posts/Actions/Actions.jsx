@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Blog } from "../../../../Context/Context";
 import { db } from "../../../../firebase/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const Actions = ({postId, title, desc}) => {
   const {setUpdateData, currentUser} = Blog();
@@ -49,7 +50,7 @@ const Actions = ({postId, title, desc}) => {
 
 export default Actions;
 
-const Button = (click, title) => {
+const Button = ({click, title}) => {
   return(
     <button
       onClick={click}
