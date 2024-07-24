@@ -46,7 +46,7 @@ const DemoHeader = () => {
           <button
             onClick={() => setAuthModel(true)}
             className={`text-white rounded-full px-3 p-2 text-sm font-medium
-            ${isActive ? "bg-green-700" : "bg-black"}
+            ${isActive ? "bg-gray-500" : "bg-black"}
             `}>
             Get Started
           </button>

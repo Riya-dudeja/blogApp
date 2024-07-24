@@ -20,7 +20,7 @@ const Profile = () => {
       comp: ProfileHome,
     },
     {
-      title: "Lists",
+      title: "Saved",
       comp: ProfileLists,
     },
     {

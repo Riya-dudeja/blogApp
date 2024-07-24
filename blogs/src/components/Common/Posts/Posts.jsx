@@ -1,10 +1,10 @@
 import React from "react";
-import useFetch from "../../hooks/useFetch";
+import { Blog } from "../../../Context/Context";
 import Loading from "../../Loading/Loading";
 import PostsCard from './PostsCard'
 
 const Posts = () => {
-  const {postData, postLoading} = useFetch("posts");
+  const {postData, postLoading} = Blog();
   return (
     <section className="flex flex-col gap-[2.5rem]">
       {postLoading ? (

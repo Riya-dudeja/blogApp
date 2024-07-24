@@ -68,7 +68,7 @@ const HomeHeader = () => {
           {pathname === "/write" ? (
             <button
               onClick={() => setPublish(true)}
-              className="btn !bg-green-700 !py-1 !text-white !rounded-full">
+              className="btn !bg-gray-700 !py-1 !text-white !rounded-full">
               Publish
             </button>
           ) : editPath === "editPost" ? (

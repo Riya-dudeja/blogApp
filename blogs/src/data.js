@@ -15,10 +15,10 @@ export const nav = [
 
 export const discover = [
   "Technology",
-  "Study",
+  "Drama",
   "Programming",
-  "Sport",
-  "Knowledge",
+  "Comedy",
+  "Romance",
   "Self Improvement",
   "Relationships",
   "Machine Learning",

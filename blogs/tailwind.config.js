@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         black1: "rgba(0,0,0,0.8)",
-        banner: "rgb(255, 192, 23)",
+        banner: "#BED7DC",
       },
       fontFamily: {
         title: `gt-super, Georgia, Cambria,Times New Roman, Times, serif;`,

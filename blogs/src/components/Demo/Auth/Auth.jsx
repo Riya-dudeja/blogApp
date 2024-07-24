@@ -57,7 +57,7 @@ const Auth = ({modal, setModal})  => {
           {signReq === "" ? (
             <>
               <h2 className="text-2xl pt-[5rem]">
-                {createUser ? "Join Medium" : "Welcome Back"}
+                {createUser ? "Join Today" : "Welcome Back"}
               </h2>
               <div className="flex flex-col gap-2 w-fit mx-auto">
                 <Button

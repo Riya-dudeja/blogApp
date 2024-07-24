@@ -18,7 +18,7 @@ const Discover = () => {
             </button>
           ))}
         </div>
-        <button className="text-green-600 text-sm py-3 hover:text-black1">
+        <button className="text-gray-600 text-sm py-3 hover:text-black1">
           See more topics
         </button>
       </div>
