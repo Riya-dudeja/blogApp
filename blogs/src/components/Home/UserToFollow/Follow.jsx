@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Blog} from '../../../Context/Context';
-import FollowBtn from './FollowBtn';
+import {Blog} from "../../../Context/Context";
+import FollowBtn from "./FollowBtn";
 import { useNavigate } from "react-router-dom";
 
 const Follow = () => {
@@ -8,9 +8,12 @@ const Follow = () => {
   const [count, setCount] = useState(5);
   const users =
   allUsers &&
-    allUsers?.slice(0, count).filter(
-      (user) => user.userId !== currentUser?.uid
+    allUsers
+      ?.slice(0, count)
+      .filter(
+        (user) => user.userId !== currentUser?.uid
     );
+
   const navigate = useNavigate();
   return(
     <>
@@ -41,7 +44,7 @@ const Follow = () => {
       {allUsers?.length > 5 && (
         <button
           onClick={() =>
-            setCount((prev) => users.length < data.length && prev + 3)
+            setCount((prev) => users.length < allUsers.length && prev + 3)
           }
           className="mb-3 text-green-300 text-sm hover:underline"
         >
